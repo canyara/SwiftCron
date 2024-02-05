@@ -3,7 +3,7 @@ import Foundation
 class YearField: Field, FieldCheckerInterface {
 
 	func isSatisfiedBy(_ date: Date, value: String) -> Bool {
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		let components = calendar.dateComponents([.year], from: date)
 
         guard let year = components.year else { return false }
@@ -16,7 +16,7 @@ class YearField: Field, FieldCheckerInterface {
 			return nextDate
 		}
 
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		let midnightComponents = calendar.dateComponents([.day, .month, .year], from: date)
 
 		var components = DateComponents()

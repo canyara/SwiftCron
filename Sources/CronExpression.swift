@@ -17,6 +17,20 @@ import Foundation
  | ------------ Hour
  -------------- Minute
  */
+
+class CronCalendar {
+    static let shared = CronCalendar()
+    
+    var current: Calendar {
+        didSet {
+        }
+    }
+    
+    private init() {
+        self.current = CustomCalendar.shared.current
+    }
+}
+
 public class CronExpression {
 
 	var cronRepresentation: CronRepresentation
@@ -85,7 +99,7 @@ public class CronExpression {
 		}
 
 		var timesToSkip = skip
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: date)
 		components.second = 0
 
@@ -147,7 +161,7 @@ public class CronExpression {
                 return false
             }
 		}
-		let day = Int(cronRepresentation.day) ?? Calendar.current.date(from: components)!.getLastDayOfMonth()
+		let day = Int(cronRepresentation.day) ?? CustomCalendar.shared.current.date(from: components)!.getLastDayOfMonth()
 		//{
 			components.day = day
 
@@ -155,7 +169,7 @@ public class CronExpression {
                 return false
             }
 		//}
-		let dateFromComponents = Calendar.current.date(from: components)!
+		let dateFromComponents = CustomCalendar.shared.current.date(from: components)!
         return date.compare(dateFromComponents) == .orderedAscending || date.compare(dateFromComponents) == .orderedSame
 	}
 }

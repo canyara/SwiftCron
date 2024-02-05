@@ -2,7 +2,7 @@ import Foundation
 
 class DayOfWeekField: Field, FieldCheckerInterface {
 	static let currentCalendarWithMondayAsFirstDay: Calendar = {
-		var calendar = Calendar.current
+		var calendar = CustomCalendar.shared.current
 		calendar.firstWeekday = 2
 		return calendar
 	}()
@@ -13,15 +13,15 @@ class DayOfWeekField: Field, FieldCheckerInterface {
 		let calendar = DayOfWeekField.currentCalendarWithMondayAsFirstDay
         var weekdayWithMondayAsFirstDay = calendar.ordinality(of: .weekday, in: .weekOfYear, for: date)!
 
-		if Int(valueToSatisfy) == 0 {
-			weekdayWithMondayAsFirstDay = 0
-		}
+		// if Int(valueToSatisfy) == 0 {
+		// 	weekdayWithMondayAsFirstDay = 0
+		// }
 
 		return self.isSatisfied(String(format: "%d", weekdayWithMondayAsFirstDay), value: valueToSatisfy)
 	}
 
 	func increment(_ date: Date, toMatchValue: String) -> Date {
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 
 		// TODO issue 13: handle list items
 		if let toMatchInt = Int(toMatchValue) {

@@ -3,7 +3,7 @@ import Foundation
 class MinutesField: Field, FieldCheckerInterface {
 
 	func isSatisfiedBy(_ date: Date, value: String) -> Bool {
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		let components = calendar.dateComponents([.minute], from: date)
 
         guard let minute = components.minute else { return false }
@@ -16,7 +16,7 @@ class MinutesField: Field, FieldCheckerInterface {
 			return nextDate
 		}
 
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		var components = DateComponents()
 		components.minute = 1
 

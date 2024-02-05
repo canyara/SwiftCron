@@ -33,7 +33,7 @@ extension DateFormatter {
 //		assert(theMinute < 60 && theMinute > -1)
 //		assert(theHour > -1 && theHour < 25)
 
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		var components = DateComponents()
 		components.hour = theHour
 		components.minute = theMinute
@@ -45,7 +45,7 @@ extension DateFormatter {
 		let theMinute = Int(minute)!
 		assert(theMinute < 60 && theMinute > -1)
 
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		var components = DateComponents()
 		components.minute = theMinute
 		let date = calendar.date(from: components)!
@@ -57,7 +57,7 @@ extension DateFormatter {
 		var daysOfWeekArray: Array<String> = []
 		let days = weekdaysString.components(separatedBy: CronRepresentation.ListIdentifier)
 
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 		let searchDate = Date(timeIntervalSince1970: 0)
 		var components = DateComponents()
 

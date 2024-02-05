@@ -22,7 +22,7 @@ class MinuteTests: XCTestCase {
 	}
 
 	func testEvery30thMinute() {
-		let calendar = Calendar.current
+		let calendar = CustomCalendar.shared.current
 
 		let dateToTestFrom = TestData.may11
 
@@ -41,7 +41,7 @@ class MinuteTests: XCTestCase {
 
         let every15thand45thMinuteCron = CronExpression(minute: "15,45")!
 
-        let calendar = Calendar.current
+        let calendar = CustomCalendar.shared.current
         var components = calendar.dateComponents([.day, .year, .month, .hour, .minute], from: dateToTestFrom)
         components.minute! += 15
         let expectedNextRunDate = calendar.date(from: components)!
@@ -55,7 +55,7 @@ class MinuteTests: XCTestCase {
     }
 
     func addMinuteTo(date: Date) -> Date {
-        let calendar = Calendar.current
+        let calendar = CustomCalendar.shared.current
         var components = calendar.dateComponents([.day, .year, .month, .hour, .minute], from: date)
         components.minute! += 1
         return calendar.date(from: components)!
