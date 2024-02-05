@@ -12,7 +12,7 @@ import SwiftCron
 class MonthTests: XCTestCase {
 
 	func testEveryMonthOn1stRunsNextMonth() {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 
 		let dateToTestFrom = TestData.may11
 

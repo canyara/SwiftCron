@@ -22,7 +22,7 @@ class YearTests: XCTestCase {
 	}
 
 	func testEveryYearOn1stJanRunsNextYear() {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 
 		let dateToTestFrom = TestData.may11
 
@@ -37,7 +37,7 @@ class YearTests: XCTestCase {
         let dateToTestFrom = TestData.may15Of2016
         let firstThursdayIn2018 = DateBuilder().with(day: 4).with(month: 1).with(year: 2018).build()
         let nextRunDate = thursdaysIn2018Cron.getNextRunDate(dateToTestFrom)!
-        XCTAssertTrue(CustomCalendar.shared.current.isDate(firstThursdayIn2018, inSameDayAs: nextRunDate))
+        XCTAssertTrue(CronCalendar.shared.current.isDate(firstThursdayIn2018, inSameDayAs: nextRunDate))
     }
 
     func testNextRunDateIsNilWhenDateIsInPast() {

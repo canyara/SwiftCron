@@ -36,7 +36,7 @@ extension Int {
 	func convertToMonth() -> String {
 		assert(self < 13 && self > 0, "Not a valid month")
 
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 		var components = DateComponents()
 		components.month = self
 		let date = calendar.date(from: components)!

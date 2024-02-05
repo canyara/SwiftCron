@@ -22,7 +22,7 @@ class DayTests: XCTestCase {
 	}
 
 	func testEvery8thDayOfMonth() {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 
 		let dateToTestFrom = TestData.may11
 
@@ -39,7 +39,7 @@ class DayTests: XCTestCase {
 
         let expectedNextRunDate = TestData.feb28Of2016
         let nextRunDate = cronExpressionUnderTest.getNextRunDate(dateToTestFrom)!
-        XCTAssertTrue(CustomCalendar.shared.current.isDate(expectedNextRunDate, inSameDayAs: nextRunDate))
+        XCTAssertTrue(CronCalendar.shared.current.isDate(expectedNextRunDate, inSameDayAs: nextRunDate))
     }
 
     func testLastDayOfMonthInMay2016Returns31() {
@@ -49,7 +49,7 @@ class DayTests: XCTestCase {
 
         let expectedNextRunDate = TestData.may31Of2016
         let nextRunDate = cronExpressionUnderTest.getNextRunDate(dateToTestFrom)!
-        XCTAssertTrue(CustomCalendar.shared.current.isDate(expectedNextRunDate, inSameDayAs: nextRunDate))
+        XCTAssertTrue(CronCalendar.shared.current.isDate(expectedNextRunDate, inSameDayAs: nextRunDate))
     }
 
     func testLastDayOfMonthInJune2016Returns30() {
@@ -59,6 +59,6 @@ class DayTests: XCTestCase {
 
         let expectedNextRunDate = TestData.june30Of2016
         let nextRunDate = cronExpressionUnderTest.getNextRunDate(dateToTestFrom)!
-        XCTAssertTrue(CustomCalendar.shared.current.isDate(expectedNextRunDate, inSameDayAs: nextRunDate))
+        XCTAssertTrue(CronCalendar.shared.current.isDate(expectedNextRunDate, inSameDayAs: nextRunDate))
     }
 }

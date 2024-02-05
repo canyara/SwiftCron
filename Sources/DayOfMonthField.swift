@@ -2,7 +2,7 @@ import Foundation
 
 class DayOfMonthField: Field, FieldCheckerInterface {
 	func isSatisfiedBy(_ date: Date, value: String) -> Bool {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 		let components = calendar.dateComponents([.day, .month, .year], from: date)
 
 		if value == "L" {
@@ -18,7 +18,7 @@ class DayOfMonthField: Field, FieldCheckerInterface {
 			return nextDate
 		}
 
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 		var midnightComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: date)
 		midnightComponents.hour = 0
 		midnightComponents.minute = 0

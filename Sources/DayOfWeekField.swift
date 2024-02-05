@@ -2,7 +2,7 @@ import Foundation
 
 class DayOfWeekField: Field, FieldCheckerInterface {
 	static let currentCalendarWithMondayAsFirstDay: Calendar = {
-		var calendar = CustomCalendar.shared.current
+		var calendar = CronCalendar.shared.current
 		calendar.firstWeekday = 2
 		return calendar
 	}()
@@ -21,7 +21,7 @@ class DayOfWeekField: Field, FieldCheckerInterface {
 	}
 
 	func increment(_ date: Date, toMatchValue: String) -> Date {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 
 		// TODO issue 13: handle list items
 		if let toMatchInt = Int(toMatchValue) {

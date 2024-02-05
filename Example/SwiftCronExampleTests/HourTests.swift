@@ -22,7 +22,7 @@ class HourTests: XCTestCase {
 	}
 
 	func testEvery11thHour() {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 
 		let dateToTestFrom = TestData.may11
 
@@ -41,7 +41,7 @@ class HourTests: XCTestCase {
 
         let everySecondAndFourthHourOfDayCron = CronExpression(minute: "0", hour: "2,4")!
 
-        let calendar = CustomCalendar.shared.current
+        let calendar = CronCalendar.shared.current
         var components = calendar.dateComponents([.day, .year, .month, .hour], from: dateToTestFrom)
         components.hour! += 2
         let expectedNextRunDate = calendar.date(from: components)!
@@ -61,7 +61,7 @@ class HourTests: XCTestCase {
     }
 
     func addMinuteTo(date: Date) -> Date {
-        let calendar = CustomCalendar.shared.current
+        let calendar = CronCalendar.shared.current
         var components = calendar.dateComponents([.day, .year, .month, .hour, .minute], from: date)
         components.minute! += 1
         return calendar.date(from: components)!

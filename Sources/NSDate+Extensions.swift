@@ -20,7 +20,7 @@ extension Date {
 	}
 
 	func nextDate(matchingUnit unit: NSCalendar.Unit, value: String) -> Date? {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 
 		var valueToMatch: Int!
 
@@ -78,7 +78,7 @@ extension Date {
 	}
 
     func getLastDayOfMonth() -> Int {
-        let calendar = CustomCalendar.shared.current
+        let calendar = CronCalendar.shared.current
         let components = calendar.dateComponents([.month], from: self)
 
         switch components.month! {

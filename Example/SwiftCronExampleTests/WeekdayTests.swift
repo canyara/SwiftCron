@@ -22,7 +22,7 @@ class WeekdayTests: XCTestCase {
 	}
 
 	func testEveryWeekOnMonday() {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 		let dateToTestFrom = TestData.may11
 		let nextMonday = TestData.may16
 
@@ -33,7 +33,7 @@ class WeekdayTests: XCTestCase {
 	}
 
 	func testEveryWeekday() {
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 		let weekendDateToTestFrom = TestData.may14
 		let nextMonday = TestData.may16
 

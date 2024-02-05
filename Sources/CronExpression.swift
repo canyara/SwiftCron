@@ -27,7 +27,7 @@ class CronCalendar {
     }
     
     private init() {
-        self.current = CustomCalendar.shared.current
+        self.current = CronCalendar.shared.current
     }
 }
 
@@ -99,7 +99,7 @@ public class CronExpression {
 		}
 
 		var timesToSkip = skip
-		let calendar = CustomCalendar.shared.current
+		let calendar = CronCalendar.shared.current
 		var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .weekday], from: date)
 		components.second = 0
 
@@ -161,7 +161,7 @@ public class CronExpression {
                 return false
             }
 		}
-		let day = Int(cronRepresentation.day) ?? CustomCalendar.shared.current.date(from: components)!.getLastDayOfMonth()
+		let day = Int(cronRepresentation.day) ?? CronCalendar.shared.current.date(from: components)!.getLastDayOfMonth()
 		//{
 			components.day = day
 
@@ -169,7 +169,7 @@ public class CronExpression {
                 return false
             }
 		//}
-		let dateFromComponents = CustomCalendar.shared.current.date(from: components)!
+		let dateFromComponents = CronCalendar.shared.current.date(from: components)!
         return date.compare(dateFromComponents) == .orderedAscending || date.compare(dateFromComponents) == .orderedSame
 	}
 }
