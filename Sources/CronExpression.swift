@@ -18,16 +18,16 @@ import Foundation
  -------------- Minute
  */
 
-class CronCalendar {
-    static let shared = CronCalendar()
+public class CronCalendar {
+    public static let shared = CronCalendar()
     
-    var current: Calendar {
+    public var current: Calendar {
         didSet {
         }
     }
     
     private init() {
-        self.current = CronCalendar.shared.current
+      self.current = Calendar.current
     }
 }
 
