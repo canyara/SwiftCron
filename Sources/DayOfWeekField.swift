@@ -13,9 +13,9 @@ class DayOfWeekField: Field, FieldCheckerInterface {
 		let calendar = DayOfWeekField.currentCalendarWithMondayAsFirstDay
         var weekdayWithMondayAsFirstDay = calendar.ordinality(of: .weekday, in: .weekOfYear, for: date)!
 
-		// if Int(valueToSatisfy) == 0 {
-		// 	weekdayWithMondayAsFirstDay = 0
-		// }
+		 if Int(valueToSatisfy) == 0 {
+		 	weekdayWithMondayAsFirstDay %= 7
+		 }
 
 		return self.isSatisfied(String(format: "%d", weekdayWithMondayAsFirstDay), value: valueToSatisfy)
 	}
